@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.controllers.MainController">
+      <Label text="Bienvenue dans l'analyse de ventes"/>
+      <Button text="Charger les données" onAction="#handleLoadData"/>
+  
+      <TableView fx:id="salestable" prefHeight="400">
+        <columns>
+            <TableColumn fx:id="colId" text="ID"/>
+            <TableColumn fx:id="colDate" text="Date"/>
+            <TableColumn fx:id="colProduct" text="Produit"/>
+            <TableColumn fx:id="colCategory" text="Catégorie"/>
+            <TableColumn fx:id="colQuantity" text="Quantité"/>
+            <TableColumn fx:id="colPrice" text="Prix"/>
+            <TableColumn fx:id="colTotal" text="Total"/>
+        </columns>
+    </TableView>
+    
+    
+</VBox>
