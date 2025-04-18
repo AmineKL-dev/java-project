@@ -30,7 +30,7 @@ public class CSVReader {
                 try {
                     Sale sale = new Sale(
                         Integer.parseInt(values[0]),
-                        values[1], // Change here!
+                        values[1], 
                         values[2],
                         values[3],
                         Integer.parseInt(values[4]),
@@ -51,7 +51,7 @@ public class CSVReader {
         return sales;
     }
     public static void main(String[] args) {
-        String filePath = "C:\\Users\\RPC\\java_anaytics\\test.csv"; // Replace with your file path
+        String filePath = "C:\\Users\\RPC\\java_anaytics\\test.csv"; 
         List<Sale> sales = readCSV(filePath);
         for (Sale sale : sales) {
             System.out.println(sale.getIdSale() + ", " + sale.getDate() + ", " + sale.getProductName() + ", " +

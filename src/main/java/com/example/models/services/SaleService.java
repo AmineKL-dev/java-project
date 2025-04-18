@@ -87,5 +87,46 @@ public class SaleService {
         }
         return mostCheapProduct;
     }
+    //total sales
+    public double getTotalSales(){
+    double totalSales = 0;
+    for(Sale sale : Sales){
+        totalSales += sale.getTotalPrice();
+    }
+    return totalSales;
+    }
+//quantity sold 
+    public int getTotalQuantitySold(){
+        int totalQuantitySold = 0;
+        for(Sale sale : Sales){
+        totalQuantitySold += sale.getQuantity();
+        }
+        return totalQuantitySold;
+    }
+    //category sold
+    public int getNumberOfCategory(){
+        int number=0;
+        List<String> categories = new ArrayList<>();
+        for(Sale sale : Sales){
+            if(!categories.contains(sale.getProductCategory())){
+                categories.add(sale.getProductCategory());
+            }
+        }
+        number = categories.size();
+        return number;
+    }
 
+    
+    public static void main(String[] args) {
+        SaleService saleService = new SaleService();
+        List<Sale> sales = new ArrayList<>();
+        sales.add(new Sale(1, "2023-10-01", "Product A", "Category 1", 2,878, 10.0));
+        sales.add(new Sale(2, "2023-10-02", "Product B", "Category 2", 1,655, 20.0));
+        sales.add(new Sale(3, "2023-10-03", "Product C", "Category 1", 3,8787, 15.0));
+        sales.add(new Sale(4, "2023-10-04", "Product D", "Category 3", 5,989,5.0));
+        sales.add(new Sale(5, "2023-10-05", "Product E", "Category 2", 4,32, 8.0));
+
+        saleService.setSales(sales);
+        System.out.println("Total Sales: " + saleService.getTotalSales());
+    }
 }
