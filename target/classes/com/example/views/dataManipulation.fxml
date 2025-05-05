@@ -31,7 +31,7 @@
                <graphic>
                   <FontAwesomeIconView fill="#9600d7" glyphName="HOME" />
                </graphic></Button>
-            <Button layoutX="3.0" layoutY="251.0" prefWidth="200.0" styleClass="btn-sidebar" text="Transaction">
+            <Button layoutX="3.0" layoutY="251.0" prefWidth="200.0" styleClass="btn-sidebar" text="Transaction" onAction="#handleButtonDataChart">
                <graphic>
                   <FontAwesomeIconView fill="#9600d7" glyphName="STATS" styleClass="btn-sidebar" />
                </graphic></Button>

@@ -1,0 +1,43 @@
+.chart {
+    -fx-background-color: transparent;
+}
+
+.chart-title {
+    -fx-font-size: 18px;
+    -fx-text-fill: #333;
+    -fx-padding: 10px;
+}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-legend {
+    -fx-padding: 5px;
+}
+
+.axis {
+    -fx-tick-label-fill: transparent;
+    -fx-tick-length: 0;
+    -fx-axis-line-visible: false;
+}
+.chart-bar {
+    -fx-bar-fill: #4a90e2;
+    -fx-background-radius: 5;
+    -fx-padding: 2px;
+    -fx-min-height: 30px; /* This increases vertical height of horizontal bars */
+    -fx-max-height: 30px;
+}
+
+.chart-bar:hover {
+    -fx-bar-fill: #357ABD;
+    -fx-cursor: hand;
+}
+
+.tooltip {
+    -fx-font-size: 12px;
+    -fx-background-color: rgba(50, 50, 50, 0.9);
+    -fx-text-fill: white;
+    -fx-padding: 6px;
+    -fx-background-radius: 6;
+}

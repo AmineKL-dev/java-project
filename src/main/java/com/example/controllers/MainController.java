@@ -4,6 +4,7 @@ import com.example.models.Sale;
 import com.example.models.repositories.SaleRepositry;
 import com.example.models.services.SaleService;
 import com.example.models.utils.CSVReader;
+import com.example.models.utils.ChartGenerator;
 import com.example.models.utils.SceneManager;
 
 import javafx.application.Platform;
@@ -16,7 +17,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 
 import java.io.File;
@@ -44,6 +48,10 @@ public class MainController implements SceneManager.DataReceiver {
     private Label quantitySoldlabel;  // Matches fx:id in FXML
     @FXML
     private Label categorySoldLabel;  // Matches fx:id in FXML
+    @FXML
+    private AnchorPane pieContainer;
+    @FXML
+    private AnchorPane barContainer;
     @FXML 
     private void initialize() {
         colId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getIdSale()).asObject());
@@ -57,6 +65,7 @@ public class MainController implements SceneManager.DataReceiver {
         salestable.getItems().addListener((ListChangeListener<Sale>) change -> {
         saleService.setSales(new ArrayList<>(salestable.getItems()));
         updateTotalSales();
+        loadChart();
     });
     }
     
@@ -107,6 +116,7 @@ public class MainController implements SceneManager.DataReceiver {
             loadSalesData(sales);
             updateTotalSales();
             salestable.setItems(data);
+            loadChart();
         } catch (Exception e) {
             System.out.println("Error loading data from database on MainController: " + e.getMessage());
         }
@@ -127,6 +137,7 @@ public class MainController implements SceneManager.DataReceiver {
         saleService.setSales(sales);
         salestable.getItems().setAll(sales);
         updateTotalSales();
+        loadChart();
     }
 
     //handleButtonDataManipulation
@@ -138,6 +149,19 @@ public class MainController implements SceneManager.DataReceiver {
             salestable.getItems()
         );
     }
+
+    //handleButtonDataChart
+    @FXML
+    private void handleButtonDataChart(){
+        SceneManager.switchToSceneWithData(
+            "/com/example/views/Test.fxml", 
+            "Data Chart",
+            salestable.getItems()
+        );
+    }
+
+
+
     public void setSalesData(ObservableList<Sale> data) {
     Platform.runLater(() -> {
         System.out.println("Setting data with " + data.size() + " items");
@@ -161,11 +185,36 @@ public class MainController implements SceneManager.DataReceiver {
         });
     }
 
+    private void loadChart(){
+         // Pie Chart Set UP
+        PieChart pieChart = ChartGenerator.createPieChart(salestable.getItems());
+        BarChart<Number,String> barchart = ChartGenerator.priceProductChart(salestable.getItems());
+         
+        pieContainer.getChildren().clear();
+        barContainer.getChildren().clear();
+        
+        AnchorPane.setTopAnchor(pieChart, 0.0);
+        AnchorPane.setBottomAnchor(pieChart, 0.0);
+        AnchorPane.setLeftAnchor(pieChart, 0.0);
+        AnchorPane.setRightAnchor(pieChart, 0.0);
+
+        AnchorPane.setTopAnchor(barchart, 0.0);
+        AnchorPane.setBottomAnchor(barchart, 0.0);
+        AnchorPane.setLeftAnchor(barchart, 0.0);
+        AnchorPane.setRightAnchor(barchart, 0.0);
+
+        pieContainer.getChildren().add(pieChart);
+        barContainer.getChildren().add(barchart);
+
+        barchart.getStylesheets().add(getClass().getResource("/styles/chart.css").toExternalForm());
+
+    }
 
     @Override
     public void setData(ObservableList<Sale> data) {
         setSalesData(data);
         loadSalesData(data);
+        loadChart();
     }
     
 

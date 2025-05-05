@@ -17,7 +17,7 @@ public class MainApp extends Application {
         SceneManager.initialize(primaryStage);
         
         // Load and show the main scene
-        SceneManager.switchToScene("/com/example/views/main.fxml", "Sales Dashboard");
+        SceneManager.switchToScene("/com/example/views/login.fxml", "Login ");
         
         primaryStage.show();
     }

@@ -30,7 +30,7 @@
                <graphic>
                   <FontAwesomeIconView fill="#9600d7" glyphName="HOME" />
                </graphic></Button>
-            <Button layoutX="3.0" layoutY="251.0" prefWidth="200.0" styleClass="btn-sidebar" text="Transaction">
+            <Button layoutX="3.0" layoutY="251.0" onAction="#handleButtonDataChart" prefWidth="200.0" styleClass="btn-sidebar" text="Transaction">
                <graphic>
                   <FontAwesomeIconView fill="#9600d7" glyphName="STATS" styleClass="btn-sidebar" />
                </graphic></Button>
@@ -38,7 +38,7 @@
                <graphic>
                   <FontAwesomeIconView fill="#9600d7" glyphName="ANCHOR" styleClass="btn-sidebar" />
                </graphic></Button>
-            <Button layoutX="3.0" layoutY="333.0" prefWidth="200.0" styleClass="btn-sidebar" text="Data Mnipulation" onAction="#handleDataManipulationButton">
+            <Button layoutX="3.0" layoutY="333.0" onAction="#handleDataManipulationButton" prefWidth="200.0" styleClass="btn-sidebar" text="Data Mnipulation">
                <graphic>
                   <FontAwesomeIconView fill="#9600d7" glyphName="COG" styleClass="btn-sidebar" />
                </graphic></Button>
@@ -103,7 +103,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="593.0" layoutY="165.0" prefHeight="191.0" prefWidth="218.0" styleClass="container" stylesheets="@../../../styles/main.css" />
+            <AnchorPane fx:id="barContainer" layoutX="593.0" layoutY="165.0" prefHeight="191.0" prefWidth="218.0" styleClass="container" stylesheets="@../../../styles/main.css" />
             <AnchorPane layoutX="16.0" layoutY="49.0" prefHeight="90.0" prefWidth="792.0">
                <children>
                   <AnchorPane layoutY="-1.0" prefWidth="250.0" styleClass="container" stylesheets="@../../../styles/main.css">
@@ -141,7 +141,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="594.0" layoutY="376.0" prefHeight="206.0" prefWidth="218.0" styleClass="container" stylesheets="@../../../styles/main.css" />
+            <AnchorPane fx:id="pieContainer" layoutX="594.0" layoutY="376.0" prefHeight="206.0" prefWidth="218.0" styleClass="container" stylesheets="@../../../styles/main.css" />
          </children>
       </AnchorPane>
    </center>

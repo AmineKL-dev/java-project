@@ -264,7 +264,16 @@ public class DataManController implements Initializable,SceneManager.DataReceive
 
     @FXML
     private void handleBackToDashboard() {
-        SceneManager.switchToSceneWithData("/com/example/views/main.fxml", "Sales Dashboard",salestable.getItems());
+        SceneManager.switchToSceneWithData(
+            "/com/example/views/main.fxml", "Sales Dashboard",salestable.getItems());
+    }
+
+    //handleButtonDataChart
+    @FXML
+    private void handleButtonDataChart(){
+        SceneManager.switchToSceneWithData(
+            "/com/example/views/Test.fxml", "Data Chart",salestable.getItems()
+        );
     }
 
     @Override

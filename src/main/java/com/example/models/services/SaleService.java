@@ -2,10 +2,14 @@ package com.example.models.services;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.example.models.Sale;
+
+import javafx.collections.ObservableList;
 
 public class SaleService {
     private static List<Sale> Sales = new ArrayList<>();
@@ -29,39 +33,66 @@ public class SaleService {
         return totalPriceByCategory;
     }
 
-    //most sold product by category
-
-    public Map<String,String> MostSoldProductByCategory(){
-        Map<String,String> mostSoldProductByCategory = new HashMap<>();
-        Map<String,Integer> productCountByCategory = new HashMap<>();
-
+    // number of sold products by category
+    public static Map<String,Integer> getUnitsSoldByCategory(){
+        Map<String,Integer> unitSold = new HashMap<>();
         for(Sale sale : Sales){
             String category = sale.getProductCategory();
-            String productName = sale.getProductName();
-            if(productCountByCategory.containsKey(category)){
-                productCountByCategory.put(category, productCountByCategory.get(category) + 1);
+            int quantity = sale.getQuantity();
+            if(unitSold.containsKey(category)){
+                unitSold.put(category, unitSold.get(category)+quantity);
             }else{
-                productCountByCategory.put(category, 1);
+                unitSold.put(category,quantity);
             }
         }
+        return unitSold;
+    }
 
+    // Sales trend over time
+    public static Map<String,Double> getSalesTrendByTheTime(){
+        Map<String,Double> salesTrend = new HashMap<>();
         for(Sale sale : Sales){
-            String category = sale.getProductCategory();
-            String productName = sale.getProductName();
-            if(mostSoldProductByCategory.containsKey(category)){
-                if(productCountByCategory.get(productName) > productCountByCategory.get(mostSoldProductByCategory.get(category))){
-                    mostSoldProductByCategory.put(category, productName);
-                }
+            String date = sale.getDate();
+            Double total = sale.getTotalPrice();
+            if(salesTrend.containsKey(date)){
+                salesTrend.put(date, salesTrend.get(date)+total);
             }else{
-                mostSoldProductByCategory.put(category, productName);
+                salesTrend.put(date, total);
             }
         }
-        return mostSoldProductByCategory;
+        return salesTrend.entrySet().stream()
+            .sorted(Map.Entry.comparingByKey())  // trier par date
+            .collect(Collectors.toMap(
+                    Map.Entry::getKey,
+                    Map.Entry::getValue,
+                    (e1, e2) -> e1,
+                    LinkedHashMap::new
+            ));
+    }
 
+    // Names of products most sold
+    public static Map<String,Integer> getMostSoldProducts(){
+        Map<String,Integer> mostSoldProducts = new HashMap<>();
+        for(Sale sale : Sales){
+            String productName = sale.getProductName();
+            int quantity = sale.getQuantity();
+            if(mostSoldProducts.containsKey(productName)){
+                mostSoldProducts.put(productName, mostSoldProducts.get(productName)+quantity);
+            }else{
+                mostSoldProducts.put(productName, quantity);
+            }
+        }
+        return mostSoldProducts.entrySet().stream()
+            .sorted(Map.Entry.<String, Integer>comparingByValue())
+            .collect(Collectors.toMap(
+                    Map.Entry::getKey,
+                    Map.Entry::getValue,
+                    (e1, e2) -> e1,
+                    LinkedHashMap::new
+            ));
     }
     
     //most expensive and cheap product
-
     public Map<String,Double> getMostExpensiveProduct(){
         Map<String,Double> mostExpensiveProduct = new HashMap<>();
         double maxprice = Double.MIN_VALUE;
@@ -75,6 +106,45 @@ public class SaleService {
         return mostExpensiveProduct;
 
     }
+
+    //Sales Distribution by product name
+    public Map<String,Double> getSalesDistribution(ObservableList<Sale> sales){
+        Map<String,Double> salesDist = new HashMap<>();
+        for(Sale sale : sales){
+            String productName = sale.getProductName();
+            double totalPrice = sale.getTotalPrice();
+            if(salesDist.containsKey(productName)){
+                salesDist.put(productName, salesDist.get(productName)+totalPrice);
+            }else{
+                salesDist.put(productName,totalPrice);
+            }
+        }
+        return salesDist;
+    }
+
+    // price unit of products by order
+    public static Map<String,Double> getPriceProduct(){
+        Map<String,Double> priceproduct = new HashMap<>();
+        for(Sale sale : Sales){
+            String productname = sale.getProductName();
+            Double price = sale.getPrice();
+            
+            priceproduct.put(productname ,price);
+            
+        }
+        return priceproduct.entrySet().stream()
+        .sorted(Map.Entry.comparingByValue())  // trier par date
+        .collect(Collectors.toMap(
+                Map.Entry::getKey,
+                Map.Entry::getValue,
+                (e1, e2) -> e1,
+                LinkedHashMap::new
+        ));
+    }
+
+
+
+
     public Map<String,Double> getMostCheapProduct(){
         Map<String,Double> mostCheapProduct = new HashMap<>();
         double minprice = Double.MAX_VALUE;
