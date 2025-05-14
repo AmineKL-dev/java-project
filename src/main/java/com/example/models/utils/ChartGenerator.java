@@ -117,6 +117,11 @@ public class ChartGenerator {
         return barChart;
     }
 
+
+
+
+    // DASHBOARD
+
     // create piechart for most sold products
     public static PieChart createPieChart(ObservableList<Sale> sales){
         Map<String,Integer> MostSold = new HashMap<>();
@@ -170,7 +175,7 @@ public class ChartGenerator {
     }
 
 
-    // Price Product in DASHBOARD
+    // Price Product in DASHBOARD 
     public static BarChart<Number,String> priceProductChart(ObservableList<Sale> sales){
         final CategoryAxis yAxis = new CategoryAxis();
         final NumberAxis xAxis = new NumberAxis();
@@ -193,7 +198,7 @@ public class ChartGenerator {
            
             data.nodeProperty().addListener((obs, oldNode, newNode) -> {
             if (newNode != null) {
-                Tooltip tooltip = new Tooltip("Product: " + entry.getValue() + "\nPrice: " + entry.getKey());
+                Tooltip tooltip = new Tooltip("Product: " + entry.getKey() + "\nPrice: " + entry.getValue());
                 Tooltip.install(newNode, tooltip);
             
             data.getNode().setOnMouseEntered(e -> {

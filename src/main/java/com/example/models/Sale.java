@@ -1,4 +1,5 @@
 package com.example.models;
+
 public class Sale {
     private int idSale;
     private String date;
@@ -73,34 +74,7 @@ public class Sale {
                 + productCategory + ", quantity=" + quantity + ", price=" + price + ", totalPrice=" + totalPrice
                 + "]";
     }
-    public Object idSaleProperty() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'idSaleProperty'");
-    }
-    public Object dateProperty() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'dateProperty'");
-    }
-    public Object productNameProperty() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'productNameProperty'");
-    }
-    public Object productCategoryProperty() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'productCategoryProperty'");
-    }
-    public Object quantityProperty() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'quantityProperty'");
-    }
-    public Object priceProperty() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'priceProperty'");
-    }
-    public Object totalPriceProperty() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'totalPriceProperty'");
-    }
+    
     
 
 

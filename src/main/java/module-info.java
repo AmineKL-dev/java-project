@@ -8,6 +8,8 @@ module com.example {
         requires de.jensd.fx.glyphs.fontawesome;
         requires javafx.graphics;
         requires javafx.base;
+        requires itext;
+        requires java.desktop;
       
     
     opens com.example to javafx.fxml;

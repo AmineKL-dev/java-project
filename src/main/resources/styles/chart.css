@@ -16,11 +16,7 @@
     -fx-padding: 5px;
 }
 
-.axis {
-    -fx-tick-label-fill: transparent;
-    -fx-tick-length: 0;
-    -fx-axis-line-visible: false;
-}
+
 .chart-bar {
     -fx-bar-fill: #4a90e2;
     -fx-background-radius: 5;

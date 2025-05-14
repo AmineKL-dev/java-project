@@ -17,44 +17,32 @@
    <left>
       <AnchorPane prefHeight="600.0" prefWidth="206.0" styleClass="sidebar" stylesheets="@../../../styles/main.css" BorderPane.alignment="CENTER">
          <children>
-            <FontAwesomeIconView fill="#9600d7" glyphName="USER" layoutX="82.0" layoutY="65.0" size="5em" />
-            <Label layoutX="28.0" layoutY="89.0" text="ID :">
-               <font><Font name="System Bold" size="12.0" /></font>
-            </Label>
-            <Label layoutX="103.0" layoutY="89.0" text="1" />
-            <Label layoutX="28.0" layoutY="116.0" text="username :">
-               <font><Font name="System Bold" size="12.0" /></font>
-            </Label>
-            <Label layoutX="103.0" layoutY="116.0" text="Amine" />
+            <FontAwesomeIconView fill="#9600d7" glyphName="USER" layoutX="80.0" layoutY="102.0" size="5em" />
             <Label layoutX="14.0" layoutY="162.0" text="Feature" />
             <Button layoutX="3.0" layoutY="211.0" onAction="#handleBackToDashboard" prefWidth="200.0" styleClass="btn-sidebar" text="Dashboard"> 
                <graphic>
                   <FontAwesomeIconView fill="#9600d7" glyphName="HOME" />
                </graphic></Button>
-            <Button layoutX="3.0" layoutY="251.0" prefWidth="200.0" styleClass="btn-sidebar" text="Transaction" onAction="#handleButtonDataChart">
+            <Button layoutX="3.0" layoutY="259.0" onAction="#handleButtonDataChart" prefWidth="200.0" styleClass="btn-sidebar" text="Analytics">
                <graphic>
                   <FontAwesomeIconView fill="#9600d7" glyphName="STATS" styleClass="btn-sidebar" />
                </graphic></Button>
-            <Button layoutX="3.0" layoutY="292.0" prefWidth="200.0" styleClass="btn-sidebar" text="Assessment">
-               <graphic>
-                  <FontAwesomeIconView fill="#9600d7" glyphName="ANCHOR" styleClass="btn-sidebar" />
-               </graphic></Button>
-            <Button layoutX="3.0" layoutY="333.0" prefWidth="200.0" styleClass="btn-sidebar" text="Data Manipulation">
+            <Button layoutX="4.0" layoutY="301.0" prefWidth="200.0" styleClass="btn-sidebar" text="Data Manipulation">
                <graphic>
                   <FontAwesomeIconView fill="#9600d7" glyphName="COG" styleClass="btn-sidebar" />
                </graphic></Button>
-            <Label layoutX="14.0" layoutY="376.0" text="Compte" />
-            <Button layoutX="3.0" layoutY="409.0" prefWidth="200.0" styleClass="btn-sidebar" text="Help">
+            <Label layoutX="17.0" layoutY="358.0" text="Compte" />
+            <Button layoutX="1.0" layoutY="436.0" onAction="#logout" prefWidth="200.0" styleClass="btn-sidebar" text="Logout">
                <graphic>
                   <FontAwesomeIconView fill="#9600d7" glyphName="UPLOAD" styleClass="btn-sidebar" />
                </graphic></Button>
-            <Button layoutX="3.0" layoutY="449.0" prefWidth="200.0" styleClass="btn-sidebar" text="Export Data">
+            <Button layoutX="2.0" layoutY="397.0" prefWidth="200.0" styleClass="btn-sidebar" text="Export Data">
                <graphic>
                   <FontAwesomeIconView fill="#9600d7" glyphName="DOWNLOAD" styleClass="btn-sidebar" text="" />
                </graphic></Button>
-            <Line endX="64.2" layoutX="109.0" layoutY="401.0" opacity="0.5" startX="-76.6" />
+            <Line endX="64.2" layoutX="108.0" layoutY="386.0" opacity="0.5" startX="-76.6" />
             <Line endX="64.2" layoutX="109.0" layoutY="191.0" opacity="0.5" startX="-76.6" />
-            <Button layoutX="3.0" layoutY="527.0" prefWidth="200.0" text="upload From CSV -&gt; DB" onAction="#fromCSVToDB">
+            <Button layoutX="3.0" layoutY="527.0" onAction="#fromCSVToDB" prefWidth="200.0" text="upload From CSV -&gt; DB">
                <styleClass>
                   <String fx:value="btn-sidebar" />
                   <String fx:value="btn-csv" />
@@ -93,8 +81,8 @@
             </AnchorPane>
             <AnchorPane layoutX="582.0" layoutY="40.0" prefHeight="562.0" prefWidth="236.0" styleClass="container">
                <children>
-                  <Button layoutX="88.0" layoutY="356.0" mnemonicParsing="false" onAction="#addSaleToDB" text="add sale" />
-                  <Button layoutX="84.0" layoutY="397.0" mnemonicParsing="false" onAction="#deleteSaleFromDB" text="delete sale" />
+                  <Button layoutX="38.0" layoutY="355.0" mnemonicParsing="false" onAction="#addSaleToDB" prefHeight="30.0" prefWidth="159.0" styleClass="btn-add" text="add sale" />
+                  <Button layoutX="37.0" layoutY="410.0" mnemonicParsing="false" onAction="#deleteSaleFromDB" prefHeight="30.0" prefWidth="161.0" styleClass="btn-del" text="delete sale" />
                   <Label layoutX="22.0" layoutY="14.0" styleClass="header" text="Control" />
                   <TextField fx:id="txtDate" layoutX="43.0" layoutY="89.0" promptText="date" />
                   <TextField fx:id="txtProduct" layoutX="43.0" layoutY="123.0" promptText="Product_name" />
@@ -103,7 +91,7 @@
                   <TextField fx:id="txtPrice" layoutX="43.0" layoutY="241.0" promptText="Price" />
                   <TextField fx:id="txtTotal_Price" layoutX="43.0" layoutY="275.0" promptText="Total_Price" />
                   <TextField fx:id="txtIdsale" layoutX="43.0" layoutY="53.0" promptText="Id_sale" />
-                  <Button layoutX="81.0" layoutY="435.0" mnemonicParsing="false" onAction="#updateSaleInDB" text="update dale" />
+                  <Button layoutX="37.0" layoutY="461.0" mnemonicParsing="false" onAction="#updateSaleInDB" prefHeight="30.0" prefWidth="162.0" styleClass="btn-upd" text="update dale" />
                </children>
             </AnchorPane>
          </children>

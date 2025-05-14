@@ -145,6 +145,7 @@ public class DataManController implements Initializable,SceneManager.DataReceive
         double total_price = Double.parseDouble(txtTotal_Price.getText());
 
         try{
+            //Ajouter une vente a Base de données
            SaleRepositry.addSaleDB(new Sale(id,date, product, category, quantity, price, total_price));
             // Clear the text fields after adding the sale
             txtIdsale.clear();
@@ -154,7 +155,7 @@ public class DataManController implements Initializable,SceneManager.DataReceive
             txtQuantity.clear();
             txtPrice.clear();
             txtTotal_Price.clear();
-            //refresh the table view
+            
             List<Sale> sales = SaleRepositry.getSalesDB();
             ObservableList<Sale> observableSales = FXCollections.observableArrayList(sales);
             salestable.setItems(observableSales);
@@ -281,5 +282,9 @@ public class DataManController implements Initializable,SceneManager.DataReceive
         setSalesData(data);
     }
     
+    @FXML
+    private void logout(){
+        SceneManager.switchToScene("/com/example/views/login.fxml", "Login");
+    }
     
 }

@@ -37,7 +37,6 @@
             <version>17</version>
         </dependency>
 
-        <!-- JavaFX Controls Module (if needed) -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -69,6 +68,11 @@
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
         <version>8.0.33</version>
+    </dependency>
+    <dependency>
+        <groupId>com.lowagie</groupId>
+        <artifactId>itext</artifactId>
+        <version>2.1.7</version>
     </dependency>
         <!-- <dependency>
             <groupId>org.jfree</groupId>

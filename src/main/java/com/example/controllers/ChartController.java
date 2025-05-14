@@ -112,6 +112,10 @@ public class ChartController implements Initializable, SceneManager.DataReceiver
         );
     }
 
+    @FXML
+    private void logout(){
+        SceneManager.switchToScene("/com/example/views/login.fxml", "Login");
+    }
 
 
 }

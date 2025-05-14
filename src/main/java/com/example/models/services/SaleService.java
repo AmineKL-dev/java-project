@@ -51,22 +51,22 @@ public class SaleService {
     // Sales trend over time
     public static Map<String,Double> getSalesTrendByTheTime(){
         Map<String,Double> salesTrend = new HashMap<>();
-        for(Sale sale : Sales){
-            String date = sale.getDate();
-            Double total = sale.getTotalPrice();
-            if(salesTrend.containsKey(date)){
-                salesTrend.put(date, salesTrend.get(date)+total);
-            }else{
-                salesTrend.put(date, total);
-            }
+        for (Sale sale : Sales) {
+            String date = sale.getDate(); // exemple : "2024-05-13"
+            String month = date.substring(0, 7); // extrait "2024-05"
+
+            double total = sale.getTotalPrice();
+            salesTrend.put(month, salesTrend.getOrDefault(month, 0.0) + total);
         }
+
+        // Trier le résultat par mois
         return salesTrend.entrySet().stream()
-            .sorted(Map.Entry.comparingByKey())  // trier par date
+            .sorted(Map.Entry.comparingByKey())
             .collect(Collectors.toMap(
-                    Map.Entry::getKey,
-                    Map.Entry::getValue,
-                    (e1, e2) -> e1,
-                    LinkedHashMap::new
+                Map.Entry::getKey,
+                Map.Entry::getValue,
+                (e1, e2) -> e1,
+                LinkedHashMap::new
             ));
     }
 

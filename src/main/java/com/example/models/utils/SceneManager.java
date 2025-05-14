@@ -22,6 +22,7 @@ public class SceneManager {
         primaryStage = stage;
     }
 
+    // Methode switch without data
     public static void switchToScene(String fxmlPath, String title) {
         try {
             FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource(fxmlPath));
@@ -39,6 +40,7 @@ public class SceneManager {
         }
     }
 
+    //methode switch with data
     public static void switchToSceneWithData(String fxmlPath, String title, ObservableList<Sale> data) {
         try {
             FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource(fxmlPath));
@@ -50,7 +52,7 @@ public class SceneManager {
                 ((DataReceiver) controller).setData(data);
                 
                 // DEBUG: Verify data received
-                System.out.println("Passing " + data.size() + " items to DataManipulationController");
+                System.out.println("Passing " + data.size() + " items");
             }
             
             currentScene = new Scene(root);

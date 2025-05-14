@@ -5,6 +5,7 @@ import com.example.models.repositories.SaleRepositry;
 import com.example.models.services.SaleService;
 import com.example.models.utils.CSVReader;
 import com.example.models.utils.ChartGenerator;
+import com.example.models.utils.PDFExporter;
 import com.example.models.utils.SceneManager;
 
 import javafx.application.Platform;
@@ -17,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
@@ -29,7 +31,9 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainController implements SceneManager.DataReceiver {
     @FXML private TableView<Sale> salestable;
@@ -43,15 +47,20 @@ public class MainController implements SceneManager.DataReceiver {
     @FXML private TableColumn<Sale, Double> totalsales;
     private SaleService saleService = new SaleService();
     @FXML
-    private Label totalSalesLabel;  // Matches fx:id in FXML
+    private Label totalSalesLabel;  
     @FXML
-    private Label quantitySoldlabel;  // Matches fx:id in FXML
+    private Label quantitySoldlabel;  
     @FXML
-    private Label categorySoldLabel;  // Matches fx:id in FXML
+    private Label categorySoldLabel;  
     @FXML
     private AnchorPane pieContainer;
     @FXML
     private AnchorPane barContainer;
+
+    Map<String,Node> charts =new LinkedHashMap<>();
+    
+    
+
     @FXML 
     private void initialize() {
         colId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getIdSale()).asObject());
@@ -62,14 +71,24 @@ public class MainController implements SceneManager.DataReceiver {
         colPrice.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getPrice()).asObject());
         colTotal.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getTotalPrice()).asObject());
 
+        
+        
+        
+
         salestable.getItems().addListener((ListChangeListener<Sale>) change -> {
         saleService.setSales(new ArrayList<>(salestable.getItems()));
+        charts.put("Total Sales by Category", ChartGenerator.createTotalSalesByCategoryChart(salestable.getItems()));
+        charts.put("Unit Sold by Category", ChartGenerator.createUnitSoldByCategoryChart(salestable.getItems()));
+        charts.put("Sales Trend Over Time", ChartGenerator.createSalesTrendByTimeLine(salestable.getItems()));
+        charts.put("Most Sold Products", ChartGenerator.createMostSoldProductChart(salestable.getItems()));
+        charts.put("Price of Products", ChartGenerator.priceProductChart(salestable.getItems()));
+        charts.put("Distribution of Sales", ChartGenerator.createPieChart(salestable.getItems()));
         updateTotalSales();
         loadChart();
-    });
+        });
     }
     
-
+    // Load fichier CSV
     @FXML
     private void handleLoadCSV() {
         FileChooser fileChooser = new FileChooser();
@@ -216,6 +235,17 @@ public class MainController implements SceneManager.DataReceiver {
         loadSalesData(data);
         loadChart();
     }
+
+    @FXML
+    private void exportPDF(){ 
+        new Thread(()->{
+            PDFExporter.exportChartsToPDF("PDF_RAPPORT.pdf",charts,salestable.getItems());
+        }).start();
+    }
     
+    @FXML
+    private void logout(){
+        SceneManager.switchToScene("/com/example/views/login.fxml", "Login");
+    }
 
 }

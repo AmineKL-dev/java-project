@@ -58,3 +58,45 @@
     -fx-text-fill: #ffffff;
 }
 
+.btn-add {
+    -fx-background-color: #aaaaaa;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
+    -fx-animation-duration:8s;
+}
+.btn-add:hover{
+    -fx-background-color: rgb(29, 145, 0);
+}
+.btn-del {
+    -fx-background-color: #aaaaaa;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
+    -fx-animation-duration:8s;
+}
+.btn-del:hover{
+    -fx-background-color: rgb(145, 0, 0);
+}
+.btn-upd {
+    -fx-background-color: #aaaaaa;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
+    -fx-animation-duration:8s;
+}
+.btn-upd:hover{
+    -fx-background-color: rgb(0, 97, 145);
+}

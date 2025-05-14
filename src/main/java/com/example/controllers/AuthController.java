@@ -1,12 +1,16 @@
 package com.example.controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import com.example.models.services.AuthService;
 import com.example.models.utils.SceneManager;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
-public class AuthController {
+public class AuthController implements Initializable{
     
     @FXML
     private TextField txtPassword;
@@ -29,7 +33,10 @@ public class AuthController {
     @FXML
     private TextField txtUsernameR;
 
-
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        
+    }
 
     @FXML
     private void loginCont(){
@@ -72,5 +79,12 @@ public class AuthController {
     private void registerButton(){
         SceneManager.switchToScene("/com/example/views/register.fxml", "Register Page");
     }
+
+    @FXML
+    private void returnButton(){
+        SceneManager.switchToScene("/com/example/views/login.fxml", "login Page");
+    }
+
+    
 
 }
