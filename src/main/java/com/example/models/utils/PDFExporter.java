@@ -88,7 +88,7 @@ public class PDFExporter {
             }  
             document.add(table);  
 
-            // 🔷 Ajouter chaque graphique
+            //  Ajouter chaque graphique
             for (Map.Entry<String, Node> entry : chartMap.entrySet()) {
                 Node chartNode = entry.getValue();
 
