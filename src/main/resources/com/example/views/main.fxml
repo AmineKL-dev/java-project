@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="1024.0" styleClass="parent" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.MainController">
+   <left>
+      <AnchorPane prefHeight="600.0" prefWidth="206.0" styleClass="sidebar" stylesheets="@../../../styles/main.css" BorderPane.alignment="CENTER">
+         <children>
+            <FontAwesomeIconView fill="#9600d7" glyphName="USER" layoutX="81.0" layoutY="83.0" size="5em" text="" />
+            <Label layoutX="14.0" layoutY="162.0" text="Feature" />
+            <Button layoutX="3.0" layoutY="211.0" prefWidth="200.0" styleClass="btn-sidebar" text="Dashboard">
+               <graphic>
+                  <FontAwesomeIconView fill="#9600d7" glyphName="HOME" />
+               </graphic></Button>
+            <Button layoutX="3.0" layoutY="257.0" onAction="#handleButtonDataChart" prefWidth="200.0" styleClass="btn-sidebar" text="Analytics">
+               <graphic>
+                  <FontAwesomeIconView fill="#9600d7" glyphName="STATS" styleClass="btn-sidebar" />
+               </graphic></Button>
+            <Button layoutX="3.0" layoutY="305.0" onAction="#handleDataManipulationButton" prefWidth="200.0" styleClass="btn-sidebar" text="Data Mnipulation">
+               <graphic>
+                  <FontAwesomeIconView fill="#9600d7" glyphName="COG" styleClass="btn-sidebar" />
+               </graphic></Button>
+            <Label layoutX="17.0" layoutY="357.0" text="Compte" />
+            <Button layoutX="3.0" layoutY="429.0" prefWidth="200.0" styleClass="btn-sidebar" text="Logout" onAction="#logout">
+               <graphic>
+                  <FontAwesomeIconView fill="#9600d7" glyphName="UPLOAD" styleClass="btn-sidebar" />
+               </graphic></Button>
+            <Button layoutX="3.0" layoutY="394.0" onAction="#exportPDF" prefWidth="200.0" styleClass="btn-sidebar" text="Export Data">
+               <graphic>
+                  <FontAwesomeIconView fill="#9600d7" glyphName="DOWNLOAD" styleClass="btn-sidebar" text="" />
+               </graphic></Button>
+            <Line endX="64.2" layoutX="112.0" layoutY="384.0" opacity="0.5" startX="-76.6" />
+            <Line endX="64.2" layoutX="109.0" layoutY="191.0" opacity="0.5" startX="-76.6" />
+            <Button layoutX="3.0" layoutY="509.0" onAction="#handleLoadCSV" prefWidth="200.0" text="Upload Data from CSV">
+               <styleClass>
+                  <String fx:value="btn-sidebar" />
+                  <String fx:value="btn-csv" />
+               </styleClass>
+            </Button>
+            <Button layoutX="3.0" layoutY="547.0" onAction="#handleLoadFromDB" prefWidth="200.0" text="Upload Data from DB">
+               <styleClass>
+                  <String fx:value="btn-sidebar" />
+                  <String fx:value="btn-bd" />
+               </styleClass>
+            </Button>
+            <Label layoutX="16.0" layoutY="119.0" prefHeight="19.0" prefWidth="171.0" text="Explore what your Data Hide ">
+               <font>
+                  <Font name="Arial Black" size="10.0" />
+               </font>
+            </Label>
+            <FontAwesomeIconView glyphName="LINUX" layoutX="179.0" layoutY="133.0" size="15" wrappingWidth="16.685708045959473">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </FontAwesomeIconView>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutY="14.0" prefHeight="37.0" styleClass="nav" stylesheets="@../../../styles/main.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="26.0" prefHeight="37.0" styleClass="header" text="Dashboard" AnchorPane.leftAnchor="26.0">
+                     <font><Font size="20.0" /></font>
+                  </Label>
+                  <Label layoutX="585.0" layoutY="1.0" prefHeight="38.0" text="Welcome Admin" />
+                  <Circle fill="#40f200" layoutX="804.0" layoutY="20.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label layoutX="751.0" layoutY="9.0" prefHeight="22.0" text="Online" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="13.0" layoutY="165.0" prefHeight="444.0" prefWidth="562.0" styleClass="container" stylesheets="@../../../styles/main.css">
+               <children>
+                  <TableView fx:id="salestable" layoutX="20.8" layoutY="42.4" prefHeight="402.0" prefWidth="542.0" stylesheets="@../../../styles/main.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="32.0">
+                     <columns>
+                        <TableColumn fx:id="colId" prefWidth="75.0" text="ID_Solde" />
+                        <TableColumn fx:id="colDate" prefWidth="75.0" text="Date" />
+                        <TableColumn fx:id="colProduct" prefWidth="75.0" text="Product" />
+                        <TableColumn fx:id="colCategory" prefWidth="75.0" text="Category" />
+                        <TableColumn fx:id="colQuantity" prefWidth="79.2" text="Quantite" />
+                        <TableColumn fx:id="colPrice" prefWidth="49.5999755859375" text="Price" />
+                        <TableColumn fx:id="colTotal" prefWidth="115.19998168945312" text="colTotal" />
+                     </columns>
+                     <styleClass>
+                        <String fx:value="table-view" />
+                        <String fx:value="column-header-background" />
+                     </styleClass>
+                  </TableView>
+                  <Label layoutX="25.0" layoutY="7.0" prefHeight="26.0" styleClass="header" text="Data">
+                     <font><Font size="15.0" /></font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="barContainer" layoutX="593.0" layoutY="165.0" prefHeight="191.0" prefWidth="218.0" styleClass="container" stylesheets="@../../../styles/main.css" />
+            <AnchorPane layoutX="16.0" layoutY="49.0" prefHeight="90.0" prefWidth="792.0">
+               <children>
+                  <AnchorPane layoutY="-1.0" prefWidth="250.0" styleClass="container" stylesheets="@../../../styles/main.css">
+                     <children>
+                        <Label layoutX="34.0" layoutY="16.0" text="Units Sold">
+                           <font><Font name="Berlin Sans FB" size="14.0" /></font>
+                        </Label>
+                        <FontAwesomeIconView fill="#9600d7" glyphName="USERS" layoutX="161.0" layoutY="62.0" size="40" text="" />
+                        <Label fx:id="quantitySoldlabel" layoutX="34.0" layoutY="45.0" text="0">
+                           <font><Font size="16.0" /></font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="541.4" prefWidth="250.0" styleClass="container" stylesheets="@../../../styles/main.css">
+                     <children>
+                        <Label layoutX="33.0" layoutY="16.0" text="Total Sales">
+                           <font><Font name="Berlin Sans FB" size="14.0" /></font>
+                        </Label>
+                        <FontAwesomeIconView fill="#9600d7" glyphName="MONEY" layoutX="165.0" layoutY="60.0" size="40" />
+                        <Label fx:id="totalSalesLabel" layoutX="33.0" layoutY="45.0" text="0">
+                           <font><Font size="16.0" /></font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="271.0" prefWidth="250.0" styleClass="container" stylesheets="@../../../styles/main.css">
+                     <children>
+                        <Label layoutX="34.0" layoutY="16.0" text="Unit Category">
+                           <font><Font name="Berlin Sans FB" size="14.0" /></font>
+                        </Label>
+                        <FontAwesomeIconView fill="#9600d7" glyphName="INBOX" layoutX="174.0" layoutY="60.0" size="40" />
+                        <Label fx:id="categorySoldLabel" layoutX="34.0" layoutY="45.0" text="0">
+                           <font><Font size="16.0" /></font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="pieContainer" layoutX="594.0" layoutY="376.0" prefHeight="206.0" prefWidth="218.0" styleClass="container" stylesheets="@../../../styles/main.css" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

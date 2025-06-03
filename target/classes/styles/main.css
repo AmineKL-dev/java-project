@@ -1,0 +1,102 @@
+.parent{
+    -fx-background-color: #ebebeb;
+    
+}
+.sidebar{
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 0px 30px 30px 0px;
+    
+}
+.white-bg{
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 30px;
+}
+.container{
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 30px;
+    -fx-padding: 10px;
+}
+.btn-sidebar{
+    -fx-background-color: transparent;
+    -fx-background-radius: 30px;
+    -fx-text-fill: #000000;
+
+}
+.btn-sidebar:hover{
+    -fx-background-color: #ebebeb;
+    -fx-background-radius: 15px;
+    -fx-text-fill: #000000;
+}
+.btn-sidebar:pressed{
+    -fx-background-color: #d0d0d0;
+    -fx-background-radius: 15px;
+    -fx-text-fill: #000000;
+}
+.table-view{
+    -fx-background-color: transparent;
+    -fx-background-radius: 30px;
+    -fx-padding: 0;
+}
+.table-view .column-header-background{
+    -fx-background-color: #ff040400;
+    -fx-background-radius: 30px;
+}
+.header{
+    -fx-text-fill: #000000;
+    -fx-border-color: #9600d7;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 0 10px;
+}
+.btn-csv{
+    -fx-background-color: #00b709;
+    -fx-background-radius: 30px;
+    -fx-text-fill: #ffffff;
+}
+.btn-bd{
+    -fx-background-color: #0600b7;
+    -fx-background-radius: 30px;
+    -fx-text-fill: #ffffff;
+}
+
+.btn-add {
+    -fx-background-color: #aaaaaa;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
+    -fx-animation-duration:8s;
+}
+.btn-add:hover{
+    -fx-background-color: rgb(29, 145, 0);
+}
+.btn-del {
+    -fx-background-color: #aaaaaa;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
+    -fx-animation-duration:8s;
+}
+.btn-del:hover{
+    -fx-background-color: rgb(145, 0, 0);
+}
+.btn-upd {
+    -fx-background-color: #aaaaaa;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
+    -fx-animation-duration:8s;
+}
+.btn-upd:hover{
+    -fx-background-color: rgb(0, 97, 145);
+}
